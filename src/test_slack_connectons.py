@@ -2,7 +2,7 @@ import pytest
 from unittest.mock import MagicMock, patch
 import slack_connections  
 from slack_sdk.errors import SlackApiError
-from types import SimpleNamespace
+
 
 @pytest.fixture
 def mock_client():
