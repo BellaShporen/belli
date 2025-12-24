@@ -31,7 +31,6 @@ def send_message_safe(channel_id, text):
         print("Error sending message:", e.response["error"])
 
 def list_slack_channels():
-    """Fetches and prints a list of public and private channels."""
     try:
         response = client.conversations_list(types="public_channel,private_channel")
         
