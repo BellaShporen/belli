@@ -5,9 +5,11 @@ on:
     branches: [ "feature/slack-b" ]
   pull_request:
 
+jobs:
   lint:
     name: Lint with Ruff
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,8 +22,8 @@ on:
       - name: Install Ruff
         run: pip install ruff
 
-      - name: Run Ruff
+      - name: Run Ruff Check
         run: ruff check .
 
-      - name: Run Ruff Format 
-        run: ruff format  .
+      - name: Run Ruff Format
+        run: ruff format .
