@@ -1,6 +1,5 @@
 import os
 os.environ["SLACK_BOT_TOKEN"] = "fake-token"
-
 import pytest
 from unittest.mock import MagicMock, patch
 import slack_connections
@@ -15,9 +14,7 @@ def mock_client():
 def test_send_message_safe_success(mock_client):
     mock_client.conversations_join.return_value = {}
     mock_client.chat_postMessage.return_value = {"ts": "12345.6789"}
-
     ts = slack_connections.send_message_safe("C0A55F1911U", "Hello")
-    
     mock_client.conversations_join.assert_called_once_with(channel="C0A55F1911U")
     mock_client.chat_postMessage.assert_called_once_with(channel="C0A55F1911U", text="Hello")
     assert ts == "12345.6789"
@@ -28,9 +25,7 @@ def test_send_message_safe_join_error_allowed(mock_client):
         response={"error": "already_in_channel"}
     )
     mock_client.chat_postMessage.return_value = {"ts": "12345.6789"}
-
     ts = slack_connections.send_message_safe("C0A55F1911U", "Hello")
-    
     mock_client.chat_postMessage.assert_called_once()
     assert ts == "12345.6789"
 
