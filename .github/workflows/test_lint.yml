@@ -1,35 +1,35 @@
-name: slack
+name: Slack CI
 
 on:
   push:
-    branches:
-      - feature/slack-b
+    branches: [ "feature/slack-b" ]
   pull_request:
 
 jobs:
   lint:
-    name: Lint Code
+    name: Lint with Ruff
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
-      - name: Install lint dependencies
-        run: pip install flake8
+      - name: Install Ruff
+        run: pip install ruff
 
-      - name: Run flake8
-        run: flake8 src
+      - name: Run Ruff
+        run: ruff check .
+
+      - name: Run Ruff Format check
+        run: ruff format --check .
 
   tests:
     name: Run Server Tests
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -42,5 +42,5 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run server tests
-        run: pytest -v 
+      - name: Run tests
+        run: pytest -v src
