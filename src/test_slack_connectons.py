@@ -1,3 +1,5 @@
+import os
+os.environ["SLACK_BOT_TOKEN"] = "fake-token"
 import pytest
 from unittest.mock import MagicMock, patch
 import slack_connections  
