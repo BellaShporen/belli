@@ -11,19 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 🔭Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: 🛠️ Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Install Ruff
+      - name: ⏬ Install Ruff
         run: pip install ruff
 
-      - name: Run Ruff Check
+      - name: ✅Run Ruff Check
         run: ruff check .
 
-      - name: Run Ruff Format
+      - name: ↔️ Run Ruff Format
         run: ruff format .
