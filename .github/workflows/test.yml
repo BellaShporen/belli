@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🔧 Checkout repository
+      - name: 📂 Checkout repository
         uses: actions/checkout@v4
 
       - name:  ⚒️ Set up Python
@@ -19,8 +19,8 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: 🪛Install dependencies
+      - name: ⏬ Install dependencies
         run: pip install -r src/requirements.txt
 
-      - name: 🆗 Run tests
+      - name: ✅ Run tests
         run: pytest -v src
