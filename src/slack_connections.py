@@ -11,7 +11,6 @@ if not slack_token:
     raise ValueError("SLACK_BOT_TOKEN environment variable not set")
 
 client = WebClient(token=slack_token)
-
 channel_id = "C0A55F1911U"
 
 def send_message_safe(channel_id, text):
