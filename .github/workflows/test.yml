@@ -1,0 +1,26 @@
+name: Slack CI-tests
+
+on:
+  push:
+    branches: [ "feature/slack-b" ]
+  pull_request:
+
+jobs:
+  tests:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📂 Checkout repository
+        uses: actions/checkout@v4
+
+      - name:  ⚒️ Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: ⏬ Install dependencies
+        run: pip install -r src/requirements.txt
+
+      - name: ✅ Run tests
+        run: pytest -v src
